@@ -1,0 +1,155 @@
+using System;
+
+namespace ConvertCurrency
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float checkRubles = 100f;
+            float checkDollars = 100f;
+            float checkEuros = 100f;
+            float rublesToDollars = 70.37f;
+            float rublesToEuros = 82.89f;
+            float dollarToEuro = 0.88f;
+            float choosedAmountMoney = 0f;
+
+            bool active = true;
+
+            while (active)
+            {
+                Console.WriteLine($"Счет в рублях - {checkRubles} ");
+                Console.WriteLine($"Счет в долларах - {checkDollars} ");
+                Console.WriteLine($"Счет в евро - {checkEuros} ");
+                Console.WriteLine("*********************");
+                Console.WriteLine("Какую операцию вы хотите выполнить с вашими счетами?");
+                Console.WriteLine(" 1 - Конвертировать рубли в доллары (с вашего счета)");
+                Console.WriteLine(" 2 - Конвертировать рубли в евро (с вашего счета)");
+                Console.WriteLine(" 3 - Конвертировать доллары в рубли (с вашего счета)");
+                Console.WriteLine(" 4 - Конвертировать доллары в евро (с вашего счета)");
+                Console.WriteLine(" 5 - Конвертировать евро в рубли (с вашего счета)");
+                Console.WriteLine(" 6 - Конвертировать евро в доллары(с вашего счета)");
+                Console.WriteLine(" 7 - Выйти из программы ");
+
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+
+                switch (userChoice)
+                {
+                    case 1:
+                        Console.WriteLine("Сколько рублей вы хотите перевести в доллары?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkRubles)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет");
+                            float convertedAnswer = choosedAmountMoney / rublesToDollars;
+                            Console.WriteLine(convertedAnswer);
+                            checkRubles -= choosedAmountMoney;
+                            checkDollars += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Сколько рублей вы хотите перевести в евро?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkRubles)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет...");
+                            float convertedAnswer = choosedAmountMoney / rublesToEuros;
+                            Console.WriteLine(convertedAnswer);
+                            checkRubles -= choosedAmountMoney;
+                            checkEuros += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Сколько долларов вы хотите перевести в рубли?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkDollars)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет...");
+                            float convertedAnswer = choosedAmountMoney * rublesToDollars;
+                            Console.WriteLine(convertedAnswer);
+                            checkDollars -= choosedAmountMoney;
+                            checkRubles += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Сколько долларов вы хотите перевести в евро?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkDollars)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет...");
+                            float convertedAnswer = choosedAmountMoney * dollarToEuro;
+                            Console.WriteLine(convertedAnswer);
+                            checkDollars -= choosedAmountMoney;
+                            checkEuros += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Сколько евро вы хотите перевести в рубли?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkEuros)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет...");
+                            float convertedAnswer = choosedAmountMoney * rublesToEuros;
+                            Console.WriteLine(convertedAnswer);
+                            checkEuros -= choosedAmountMoney;
+                            checkRubles += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+                    case 6:
+                        Console.WriteLine("Сколько евро вы хотите перевести в доллары?");
+                        choosedAmountMoney = float.Parse(Console.ReadLine());
+                        if (choosedAmountMoney < 0f || choosedAmountMoney > checkEuros)
+                        {
+                            Console.WriteLine("Вы выбрали невозможное число(");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Подождите,  идет подсчет...");
+                            float convertedAnswer = choosedAmountMoney / dollarToEuro;
+                            Console.WriteLine(convertedAnswer);
+                            checkEuros -= choosedAmountMoney;
+                            checkDollars += convertedAnswer;
+                            Console.WriteLine();
+                        }
+                        break;
+                    case 7:
+                        active = false;
+                            break;
+                }
+                Console.WriteLine("Нажмите Enter чтобы продолжить...");
+                Console.ReadLine();
+                Console.Clear();
+            }
+            Console.WriteLine("Спасибо за программу, До свидания!");
+        }
+    }
+}
